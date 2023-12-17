@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.SimpleLayout;
 
 
@@ -16,11 +17,17 @@ public class JdbcApp
 	
 	private static Logger logger = Logger.getLogger(JdbcApp.class);
 	
+//	static {
+//		SimpleLayout layout = new SimpleLayout();
+//		ConsoleAppender appender = new ConsoleAppender(layout);
+//		logger.addAppender(appender);
+//		logger.setLevel(Level.INFO);
+//	}
+	
+	
+	//giving the input in the log4j.properties file::
 	static {
-		SimpleLayout layout = new SimpleLayout();
-		ConsoleAppender appender = new ConsoleAppender(layout);
-		logger.addAppender(appender);
-		logger.setLevel(Level.INFO);
+		PropertyConfigurator.configure("src/main/java/in/ineuron/cfg/log4j.properties");
 	}
 	
 	public static void main( String[] args )
@@ -39,7 +46,7 @@ public class JdbcApp
 
 			String url = "jdbc:mysql:///pwskill";
 			String user = "root";
-			String password = "****";
+			String password = "Coxberry@99";
 
 			connection = DriverManager.getConnection(url, user, password);
 			logger.info("Connection Established Successfully...");
